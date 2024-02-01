@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className="z-[999] relative">
       <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border  border-opacity-40 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full bg-zinc-950 border-gray-800 bg-opacity-75"
+        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-40 shadow-lg shadow-black/[0.03] backdrop-blur-[0.3rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full bg-zinc-900 border-gray-800 bg-opacity-75"
         initial={{ y: -100, x: "-50%", opacity: 0 }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}
       ></motion.div>
@@ -32,7 +32,7 @@ export default function Header() {
                 className={clsx(
                   "flex w-full items-center justify-center px-3 py-3 transition text-zinc-400 hover:text-gray-300",
                   {
-                    "text-gray-200": activeSection === link.name,
+                    "text-zinc-200": activeSection === link.name,
                   }
                 )}
                 href={link.hash}
@@ -45,7 +45,7 @@ export default function Header() {
 
                 {link.name === activeSection && (
                   <motion.span
-                    className="rounded-full absolute inset-0 -z-10 bg-zinc-800"
+                    className="rounded-full absolute inset-0 -z-10 bg-zinc-700"
                     layoutId="activeSection"
                     transition={{
                       type: "spring",

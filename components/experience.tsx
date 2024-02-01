@@ -11,7 +11,7 @@ import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function Experience() {
-  const { ref } = useSectionInView("Experience", 0.5);
+  const { ref } = useSectionInView("Experience", 0.3);
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
       <SectionHeading>My Journey</SectionHeading>

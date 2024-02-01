@@ -10,15 +10,20 @@ import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { TextGenerateEffect } from "../components/ui/text-generate-effect";
+import SparklesCore from "./ui/sparkles-core";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+
+  const words =
+    "Hello, I'm Prayag. I'm a problem solver and I enjoy building better web experiences.";
   return (
     <section
       ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-28 max-w-[50rem] text-center sm:mb-0 md:pt-[150px] pt-[100px] scroll-mt-[100rem]"
     >
       <div className="flex items-center justify-center">
         <div className="relative">
@@ -52,15 +57,8 @@ export default function Intro() {
           </motion.span>
         </div>
       </div>
-      <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <span className="font-bold">Hello, I'm Prayag.</span> I'm a{" "}
-        <span className="font-bold">full-stack developer.</span> I enjoy
-        building sites & apps.
-      </motion.h1>
+
+      <TextGenerateEffect words={words} />
 
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 text-lg font-medium"
@@ -70,7 +68,40 @@ export default function Intro() {
           delay: 0.1,
         }}
       >
+        {/* Demo button */}
         <Link
+          href="#contact"
+          className="bg-slate-800 no-underline group cursor-pointer relative rounded-full p-px text-lg font-medium leading-6 text-gray-50 inline-block"
+          onClick={() => {
+            setActiveSection("Contact");
+            setTimeOfLastClick(Date.now());
+          }}
+        >
+          <span className="absolute inset-0 overflow-hidden rounded-full">
+            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+          </span>
+          <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 px-7 py-3 ring-1 ring-white/10 ">
+            <span>{`Connect with me`}</span>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M10.75 8.75L14.25 12L10.75 15.25"
+              ></path>
+            </svg>
+          </div>
+          <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-300 group-hover:opacity-40"></span>
+        </Link>
+
+        {/* <Link
           href="#contact"
           className="group bg-gray-950 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 hover:bg-gray-950 active:scale-105 transition"
           onClick={() => {
@@ -80,7 +111,7 @@ export default function Intro() {
         >
           Contact me here{" "}
           <BsArrowRight className="opacity-70 group-hover:translate-x-2 transition" />
-        </Link>
+        </Link> */}
         <a
           href="/PrayagDave_Resume.pdf"
           download
